@@ -83,4 +83,14 @@ int _getppid(char **argv, char *line)
 	else if (strncmp(argv[1], "$PATH", 5) == 0)
 	{
 		path = getenv("PATH");
-		myprintf(pat
+		myprintf(path);
+		myprintf("\n");
+		return (0);
+	}
+	else if (strncmp(argv[0], "exit", 5) == 0)
+	{
+		exitshell(argv, line);
+		return (0);
+	}
+	return (1);
+}
