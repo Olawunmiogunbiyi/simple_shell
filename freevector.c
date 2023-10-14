@@ -22,11 +22,7 @@ void free_vector(char **argv)
 			i++;
 		}
 		free(argv);
-	}
-}
-
-
-func.c
+	
 
 #include "main.h"
 /**

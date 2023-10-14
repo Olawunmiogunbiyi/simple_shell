@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _getline - reads an entire line of inputs from user
+ * _getline - read an entire line of inputs from user
  * @lineptr: pointer to the buffer
- * @stream: size of the buffer
+ * @stream: size of  buffer
  *
  * Return: number of characters read, or -1 if an error occurred.
  */
