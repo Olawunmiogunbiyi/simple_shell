@@ -2,7 +2,7 @@
 
 /**
  * _erratoi - converts a string to an integer
- * @s: the string to be converted
+ * @c: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
@@ -31,7 +31,7 @@ int _erratoi(char *c)
 /**
  * print_error - prints an error message
  * @info: the parameter & return info struct
- * @estr: string containing specified error type
+ * @e: string containing specified error type
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
@@ -49,7 +49,7 @@ void print_error(info_t *info, char *e)
 /**
  * print_d - function prints a decimal (integer) number (base 10)
  * @input: the input
- * @fd: the filedescriptor to write to
+ * @f: the filedescriptor to write to
  *
  * Return: number of characters printed
  */
