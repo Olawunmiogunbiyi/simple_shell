@@ -6,19 +6,19 @@
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
-int _erratoi(char *s)
+int _erratoi(char *c)
 {
-	int i = 0;
+	int n = 0;
 	unsigned long int result = 0;
 
-	if (*s == '+')
-		s++;  /* TODO: why does this make main return 255? */
-	for (i = 0;  s[i] != '\0'; i++)
+	if (*c == '+')
+		c++;  /* TODO: why does this make main return 255? */
+	for (n = 0;  s[n] != '\0'; n++)
 	{
-		if (s[i] >= '0' && s[i] <= '9')
+		if (c[n] >= '0' && c[n] <= '9')
 		{
 			result *= 10;
-			result += (s[i] - '0');
+			result += (c[n] - '0');
 			if (result > INT_MAX)
 				return (-1);
 		}
@@ -35,7 +35,7 @@ int _erratoi(char *s)
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
-void print_error(info_t *info, char *estr)
+void print_error(info_t *info, char *e)
 {
 	_eputs(info->fname);
 	_eputs(": ");
@@ -43,7 +43,7 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	_eputs(info->argv[0]);
 	_eputs(": ");
-	_eputs(estr);
+	_eputs(e);
 }
 
 /**
@@ -53,13 +53,13 @@ void print_error(info_t *info, char *estr)
  *
  * Return: number of characters printed
  */
-int print_d(int input, int fd)
+int print_d(int input, int f)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
-	if (fd == STDERR_FILENO)
+	if (f == STDERR_FILENO)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
@@ -129,12 +129,12 @@ char *convert_number(long int num, int base, int flags)
  */
 void remove_comments(char *buf)
 {
-	int i;
+	int j;
 
-	for (i = 0; buf[i] != '\0'; i++)
-		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
+	for (j = 0; buf[j] != '\0'; j++)
+		if (buf[j] == '#' && (!j || buf[j - 1] == ' '))
 		{
-			buf[i] = '\0';
+			buf[j] = '\0';
 			break;
 		}
 }
