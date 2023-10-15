@@ -24,64 +24,64 @@ char *_strcpy(char *dest, char *src)
 
 /**
  * _strdup - duplicates a string
- * @str: the string to duplicate
+ * @str_d: the string to duplicate
  *
  * Return: pointer to the duplicated string
  */
-char *_strdup(const char *str)
+char *_strdup(const char *str_d)
 {
 	int length = 0;
 	char *ret;
 
-	if (str == NULL)
+	if (str_d == NULL)
 		return (NULL);
-	while (*str++)
+	while (*str_d++)
 		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
 		return (NULL);
 	for (length++; length--;)
-		ret[length] = *--str;
+		ret[length] = *--str_d;
 	return (ret);
 }
 
 /**
  *_puts - prints an input string
- *@str: the string to be printed
+ *@str_d: the string to be printed
  *
  * Return: Nothing
  */
-void _puts(char *str)
+void _puts(char *str_d)
 {
 	int i = 0;
 
-	if (!str)
+	if (!str_d)
 		return;
-	while (str[i] != '\0')
+	while (str_d[i] != '\0')
 	{
-		_putchar(str[i]);
+		_putchar(str_d[i]);
 		i++;
 	}
 }
 
 /**
  * _putchar - writes the character c to stdout
- * @c: The character to print
+ * @c_prt: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c)
+int _putchar(char c_prt)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c_prt == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
 		write(1, buf, i);
 		i = 0;
 	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
+	if (c_prt != BUF_FLUSH)
+		buf[i++] = c_prt;
 	return (1);
 }

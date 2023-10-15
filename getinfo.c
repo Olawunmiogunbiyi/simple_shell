@@ -15,13 +15,13 @@ void clear_info(info_t *info)
 /**
  * set_info - initializes info_t struct
  * @info: struct address
- * @av: argument vector
+ * @argsv: argument vector
  */
-void set_info(info_t *info, char **av)
+void set_info(info_t *info, char **argsv)
 {
 	int i = 0;
 
-	info->fname = av[0];
+	info->fname = argsv[0];
 	if (info->arg)
 	{
 		info->argv = strtow(info->arg, " \t");
