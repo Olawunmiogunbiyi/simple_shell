@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * exitshell - A function to exit the shell program
  * @tokk : string received from getline
