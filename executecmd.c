@@ -15,7 +15,6 @@ int executecmd(char **argv, char **envp, char *line)
 	int i = 0, retv = 0;
 
 	retv = _getppid(argv, line);
-
 	if ((retv > 1))
 	{	free_vector(argv);
 		return (1);	}
