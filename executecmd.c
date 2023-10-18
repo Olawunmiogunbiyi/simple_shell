@@ -94,3 +94,4 @@ int _getppid(char **argv, char *line)
 	}
 	return (1);
 }
+

@@ -10,11 +10,6 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	if (!(argc < 2))
-	{
-		printf("Usage: %s path_to_file ...\n", argv[0]);
-		return (1);
-	}
 	if (!isatty(STDIN_FILENO))
 		non_inter_mode(argc, argv, envp);
 	else

@@ -44,4 +44,4 @@ int interract(int argc, char **argv, char **envp)
 	}
 	free(line);/* */
 	return (0);
-
+}
