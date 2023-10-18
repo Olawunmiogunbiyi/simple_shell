@@ -14,8 +14,11 @@ int executecmd(char **argv, char **envp, char *line)
 	unsigned long hashval;
 	int i = 0, retv = 0;
 
-	if ((retv = _getppid(argv, line)) > 1)
-	{	free_vector(argv);
+	retv = _getppid(argv, line);
+	if (retv > 1)
+	{
+		retv = retv + 1;
+		free_vector(argv);
 		return (1);	}
 	p_command = argv[i];
 	if (argv[0] == NULL)
@@ -23,8 +26,7 @@ int executecmd(char **argv, char **envp, char *line)
 		free_vector(argv);
 		free(line);
 		perror("Error argv");
-		return (0);
-	}
+		return (0);	}
 	hashval = hash(p_command);
 	switch (hashval)
 	{
@@ -46,13 +48,13 @@ int executecmd(char **argv, char **envp, char *line)
 		default:
 			{
 				process(argv, envp);
-				return (0);
-			}
+				return (0);	}
 	} return (0);
 }
 /**
  * _getppid - prints the getppid of the program
  * @argv: the command
+ * @line : line argument
  *
  * Return: Always 0 for success
  */

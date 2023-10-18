@@ -38,14 +38,15 @@ char *_getpath(char *strings, char ** envp);
 int process(char **command, char **envp);
 int change_dir(char **command, char **envp);
 int main(int argc, char **argv, char **envp);
-ssize_t _getline(char **lineptr, FILE *stream);
+/*ssize_t _getline(char **lineptr, FILE *stream);*/
 char *_strdup(const char *str);
 char *_strchr(char *s, char c);
 void print_env(char **argv, char **envp);
 void set_env_var(char **args);
 void un_set_env_var(char **args);
-int cd_dir(char **argv, char **envp);
+int cd_dir(char **args, char **envp);
 int interract(int argc, char **argv, char **envp);
 int _getppid(char **argv, char *line);
+ssize_t _getline(char **lineptr, size_t *n, int fd);
 
 #endif

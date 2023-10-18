@@ -1,49 +1,49 @@
 #include "main.h"
 /**
  * cd_dir -A function to change directory
- * @argv:  directory argu,ment
+ * @args:  directory argument
  * @envp: Environment variable
  *
  * Return: retunr 0
  */
-int cd_dir(char **argv, char **envp)
+int cd_dir(char **args, char **envp)
 {
-	char *oldpwd;
-	int value = -1;
+	char *new_dir;
+
 	char cwd[PATH_MAX];
 
-	if (argv[1] == NULL)
+	if (args[1] == NULL || strcmp(args[1], "~") == 0)
 	{
-		value = chdir(_getenv("HOME", envp));
+		new_dir = _getenv("HOME", envp);
 	}
-	else if (_strcmp(argv[1], "-") == 0)
+	else if (strcmp(args[1], "-") == 0)
 	{
-		oldpwd = _getenv("OLDPWD", envp);
-		if (oldpwd != NULL)
-		{
-			value = chdir(oldpwd);
-		}
-		else
-		{
-			myprintf("CD OLDPWD not set\n");
-			return (-1);
-		}
+		new_dir = _getenv("OLDPWD", envp);
 	}
 	else
 	{
-		value = chdir(argv[1]);
+		new_dir = args[1];
 	}
-	if (value == -1)
+	if (getcwd(cwd, sizeof(cwd)) == NULL)
 	{
-		perror("cd");
-		return (-1);
+		perror("getcwd");
+		return (1);
 	}
-	else
+	if (setenv("OLDPWD", cwd, 1) != 0)
 	{
-		getcwd(cwd, sizeof(cwd));
-		setenv("OLDPWD", getenv("PWD"), 1);
-		setenv("PWD", cwd, 1);
+		perror("setenv");
+		return (1);
 	}
-	free_vector(argv);
+	if (chdir(new_dir) != 0)
+	{
+		perror("chdir");
+		return (1);
+	}
+	if (setenv("PWD", new_dir, 1) != 0)
+	{
+		perror("setenv");
+		return (1);
+	}
+	free_vector(args);
 	return (0);
 }
