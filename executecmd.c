@@ -13,7 +13,8 @@ int executecmd(char **argv, char **envp, char *line)
 	char *p_command;
 	unsigned long hashval;
 	int i = 0, retv = 0;
-	if ((retv = _getppid(argv, line)) > 1 )
+
+	if ((retv = _getppid(argv, line)) > 1)
 	{	free_vector(argv);
 		return (1);	}
 	p_command = argv[i];
@@ -94,4 +95,3 @@ int _getppid(char **argv, char *line)
 	}
 	return (1);
 }
-
