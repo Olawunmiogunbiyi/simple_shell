@@ -2,7 +2,7 @@
 /**
  * non_inter_mode - run batch commands
  * @argc: arguement vector
- * @argv: second argumen
+ * @argv: second argument
  * @envp: third argument
  *
  * Return:0 when succefull
